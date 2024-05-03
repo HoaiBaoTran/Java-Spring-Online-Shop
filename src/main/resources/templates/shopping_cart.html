@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cart</title>
+<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link th:href="@{/css/shopping_cart.css}" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script src="jquery-3.6.4.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+</head>
+<body>
+	<div>
+		<h2>Shopping Cart</h2>
+	</div>
+	<div class="row">
+		<div class="col-9">
+			<th:block th:each="item : ${cartItemList}">
+				<div class="row border rounded" th:with="product = ${item.product}">
+					<div class="col-3">
+						<div>
+							<p th:text="${item.id}"></p>
+							<i class="fa fa-trash" aria-hidden="true"></i>
+							<a class="fas fa-trash icon-dark" th:href="@{/}"></a>
+						</div>
+					</div>
+					<div class="col-3">
+						 <img class="img-item" th:src="@{/images/{imgUrl}(imgUrl=${product.imageUrl})}"/> 
+					</div>
+					<div class=col-6>
+						<div>
+							<b th:text=${product.name}></b>
+						</div>
+						<div><input class="form-control" type="number" th:value="${item.quantity}"/></div>
+						<div>
+							<span>x</span>
+							<span>$[[${product.price}]]</span>
+						</div>
+						<div>
+							<span class="h4">$[[${product.price * item.quantity}]]</span>
+						</div>
+					</div>
+				</div>
+				<div class="row m-1">&nbsp</div>
+			</th:block>
+		</div>
+		
+		<div class="col-3">
+			<div class="mt-4">
+				<span class="h3">Estimated Total: </span>
+			</div>
+			<div class="mt-4">
+				<span class="h2">$104905.72</span>
+			</div>
+			<div>
+				<a class="mt-4 p-3 btn btn-danger" th:href="@{/checkout}">Check out</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

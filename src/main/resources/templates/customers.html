@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>All Customers</title>
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container text-center">
+		<div>
+			<form th:action="@{/logout}" method="POST">
+				<p>Welcome <b>Hoài Bảo</b></p>
+				<a class="btn btn-danger" th:href="@{/}">Logout</a>
+			</form>
+		</div>
+		
+		<div>
+			<h1>List of All Customers</h1>
+		</div>
+		<div>
+			<table class="table table-striped table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>Customer ID</th>
+						<th>First name</th>
+						<th>Last name</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="customer : ${customerList}">
+						<td th:text="${customer.id}"></td>
+						<td th:text="${customer.firstName}"></td>
+						<td th:text="${customer.lastName}"></td>
+						<td th:text="${customer.email}"></td>
+					</tr>
+				</tbody>
+			</table>
+		
+		</div>
+</body>
+</html>

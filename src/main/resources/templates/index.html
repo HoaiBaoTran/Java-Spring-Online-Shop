@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+	<div class="container text-center">
+		
+		<div>
+			<h1>Welcome to JavaTech Mid-term Shop</h1>
+		</div>
+		<div>
+			<h3><a th:href="@{/list_customers}">List All Customers</a></h3>
+			<h3><a th:href="@{/shop}">Shop</a></h3>
+			<h3><a th:href="@{/login}">Login</a></h3>
+			<h3><a th:href="@{/register}">Register</a></h3>
+		</div>	
+	</div>
+	
+</body>
+</html>
